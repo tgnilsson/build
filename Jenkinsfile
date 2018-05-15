@@ -6,24 +6,22 @@ pipeline {
 		NODE_VER = '8.1.0'
 	}
 
-	post {					
+//	post {					
 							//must go at the top so it will run this if it errors after, no access to the workspace
 		//success slacksend here
 		//failure
 		//always
 		//unstable
 		/abort
-	}
+//	}
+//access to the global tools confuration
+//	tools { }
 
-	tools { 				
-							//access to the global tools confuration
-	}
-
-	options {				
+//	options {				
 							//global configurations like timeout, skipDefaultCheckout()
 							//every step checks out code, unless you do the skip and manually chekcout
 
-	}
+//	}
 
 
 
