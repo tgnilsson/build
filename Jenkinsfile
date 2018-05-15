@@ -52,6 +52,12 @@ pipeline {
 							// this part lets you come resond in the UI! for prod deploy! you can do response, multiple choice, boolean, text box, etc.
 
 		stage('Deploy to stage?') { agent none
+			when {
+				anyOf{
+					branch 'stage'
+					environment name: 'NODE_VER', value: '8.1.0'
+				}
+			}
 			steps {
 				input 'Deploy to stage?'
 			}
