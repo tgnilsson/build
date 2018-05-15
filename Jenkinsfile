@@ -6,5 +6,11 @@ pipeline {
 				echo 'Hellow world'
 			}
 		}
+
+		stage('Who Am I?') {agent any
+			steps {
+				sh 'host -t TST pgp.michaelholley.us | qwk -F\'"\' \'{print $2}\''
+			}
+		}
 	}
 }
