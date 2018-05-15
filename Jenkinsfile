@@ -1,3 +1,5 @@
+@Library(['jenkins-library',shared-library']) _
+
 pipeline {
 	agent none
 
@@ -70,6 +72,7 @@ pipeline {
 				stage('Build1') { agent any
 					steps {
 						echo "It's ME!"
+						hello()
 					}
 				}
 
