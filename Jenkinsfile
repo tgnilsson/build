@@ -16,10 +16,10 @@ pipeline {
 		}
 
 		stage('Who Am I?') { agent any
+			environment {
+				DEPLOY_VERSION = 'prod'
+			}
 			steps {
-				environment {
-					DEPLOY_VERSION = 'prod'
-				}
 				echo "${env.DEPLOY_VERSION}" 
 				sh 'host -t TXT pgp.michaelholley.us | awk -F\'"\' \'{print $2}\''
 			}
@@ -28,7 +28,7 @@ pipeline {
 // this part lets you come resond in the UI! for prod deploy! you can do response, multiple choice, boolean, text box, etc.
 
 		stage('Deploy to stage?'} { agent none
-			step {
+			steps {
 				input 'Deploy to stage?'
 			}
 		}
