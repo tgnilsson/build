@@ -9,7 +9,7 @@ pipeline {
 
 		stage('Who Am I?') {agent any
 			steps {
-				sh 'host -t TST pgp.michaelholley.us | qwk -F\'"\' \'{print $2}\''
+				sh 'host -t TST pgp.michaelholley.us | awk -F\'"\' \'{print $2}\''
 			}
 		}
 	}
