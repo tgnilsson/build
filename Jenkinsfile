@@ -27,7 +27,7 @@ pipeline {
 
 // this part lets you come resond in the UI! for prod deploy! you can do response, multiple choice, boolean, text box, etc.
 
-		stage('Deploy to stage?'} { agent none
+		stage('Deploy to stage?') { agent none
 			steps {
 				input 'Deploy to stage?'
 			}
