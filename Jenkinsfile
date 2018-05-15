@@ -17,7 +17,6 @@ pipeline {
 
 	tools { 				
 							//access to the global tools confuration
-
 	}
 
 	options {				
