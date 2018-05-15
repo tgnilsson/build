@@ -7,20 +7,20 @@ pipeline {
 	}
 
 //	post {					
-							//must go at the top so it will run this if it errors after, no access to the workspace
+		// must go at the top so it will run this if it errors after, no access to the workspace
 		//success slacksend here
 		//failure
 		//always
 		//unstable
-		/abort
+		//abort
 //	}
-//access to the global tools confuration
-//	tools { }
+//	tools { 
+		//access to the global tools confuration
+//}
 
 //	options {				
-							//global configurations like timeout, skipDefaultCheckout()
-							//every step checks out code, unless you do the skip and manually chekcout
-
+	//global configurations like timeout, skipDefaultCheckout()
+	//every step checks out code, unless you do the skip and manually chekcout
 //	}
 
 
