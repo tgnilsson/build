@@ -1,11 +1,34 @@
 pipeline {
 	agent none
-	environment {
+
+//3 things in the global: environment, post, 
+	environment { 			//global environment variables, put the unique stuff here
 		NODE_VER = '8.1.0'
 	}
+
+	post {					//must go at the top so it will run this if it errors after, no access to the workspace
+		//success slacksend here
+		//failure
+		//always
+		//unstable
+		/abort
+	}
+
+	tools { 				//access to the global tools confuration
+
+	}
+
+	options {				//global configurations like timeout, skipDefaultCheckout()
+							//every step checks out code, unless you do the skip and manually chekcout
+
+	}
+
+
+
 	stages {
 		stage('Beginning') { agent any
-			environment {
+
+			environment {	//stage environment variables
 				DEPLOY_VERSION = 'stage'
 			}
 			steps {
@@ -25,11 +48,28 @@ pipeline {
 			}
 		}
 
-// this part lets you come resond in the UI! for prod deploy! you can do response, multiple choice, boolean, text box, etc.
+							// this part lets you come resond in the UI! for prod deploy! you can do response, multiple choice, boolean, text box, etc.
 
 		stage('Deploy to stage?') { agent none
 			steps {
 				input 'Deploy to stage?'
+			}
+		}
+
+		stage('Parallel') { agent any
+			failFast true	//if running parallel, fail them ALL immediately if any fails, don't finish the build
+			parallel {
+				stage('Build1') {
+					steps {
+						echo "It's ME!"
+					}
+				}
+
+				stage('Build2') {
+					steps {
+						echo "No it's me!"
+					}
+				}
 			}
 		}
 	}
